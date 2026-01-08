@@ -161,3 +161,17 @@ export const adminLogin = async (req, res) => {
         return res.json({message:"Error in Admin Login",success:false,error});
     }
 }
+export const getProfile = async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id).select("-password");
+        if (!user)
+        {
+            return res.status(404).json({message:"User not found",success:false});
+        }
+        res.json(user);
+    }
+    catch (error)
+    {
+        return res.json({message:"Error in fetching profile",success:false,error});
+    }
+}

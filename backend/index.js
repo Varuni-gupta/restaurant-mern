@@ -5,15 +5,19 @@ import dotenv from 'dotenv';
 dotenv.config();
 import { connectDB } from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
-
-
+import categoryRoutes from './routes/categoryRoutes.js';
+import connectCloudinary from './config/cloudinary.js';
+import menuRoutes from './routes/menuRoutes.js';
 
 connectDB();
+connectCloudinary();
 const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
 app.use('/api/auth', authRoutes);
+app.use('/api/category', categoryRoutes);
+app.use("/api/menu", menuRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
