@@ -152,7 +152,12 @@ export const adminLogin = async (req, res) => {
         sameSite:"strict",
         maxAge:24*60*60*1000
             });
-        return res.json({ message: "Admin Login Successful", success: true })
+        return res.json({
+            admin:
+            {
+                admin:adminEmail
+            },    message: "Admin Login Successful", success: true
+        })
         }
     
     catch (error)
