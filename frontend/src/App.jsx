@@ -15,6 +15,7 @@ import Contact from './pages/Contact.jsx'
 import Navbar from './components/Navbar.jsx'
 import { useLocation } from 'react-router-dom'
 import {Toaster} from 'react-hot-toast'
+import Footer from './components/Footer.jsx'
 const App = () => {
   const adminPath = useLocation().pathname.includes("admin")
   return (
@@ -35,6 +36,7 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         
       </Routes>
+      {!adminPath&&<Footer/>} 
     </div>
   )
 }
