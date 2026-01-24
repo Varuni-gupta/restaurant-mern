@@ -1,5 +1,5 @@
 import express from 'express';
-import { registerUser } from '../controllers/authController.js';
+import { isAuth, registerUser } from '../controllers/authController.js';
 import { loginUser } from '../controllers/authController.js';
 import { logoutUser } from '../controllers/authController.js';
 import { adminLogin } from '../controllers/authController.js';
@@ -11,4 +11,5 @@ authRoutes.post("/login", loginUser);
 authRoutes.post("/logout", logoutUser);
 authRoutes.post("/admin/login", adminLogin);
 authRoutes.get("/profile", protect, getProfile);
+authRoutes.get("/is-auth", protect, isAuth);
 export default authRoutes;
