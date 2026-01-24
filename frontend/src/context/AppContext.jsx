@@ -9,6 +9,7 @@ const AppContextProvider = ({ children }) => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [user, setUser] = useState(null);
+     const [admin, setAdmin] = useState(null);
     const isAuth = async () => {
         try {
             const { data } = await axios.get("http://localhost:5000/api/auth/is-auth");
@@ -22,7 +23,7 @@ const AppContextProvider = ({ children }) => {
     useEffect(() => {
         isAuth();
     }, []);
-    const value = {navigate,loading,setLoading,user,setUser,axios};
+    const value = {navigate,loading,setLoading,user,setUser,axios,admin,setAdmin};
     return (
         <AppContext.Provider value={value}>
             {children}

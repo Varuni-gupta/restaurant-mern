@@ -16,8 +16,13 @@ import Navbar from './components/Navbar.jsx'
 import { useLocation } from 'react-router-dom'
 import {Toaster} from 'react-hot-toast'
 import Footer from './components/Footer.jsx'
+import AdminLayout from './pages/admin/AdminLayout.jsx'
+import { AppContext } from './context/AppContext.jsx'
+import AdminLogin from './pages/admin/AdminLogin.jsx'
+import { useContext } from 'react'
 const App = () => {
-  const adminPath = useLocation().pathname.includes("admin")
+  const adminPath = useLocation().pathname.includes("admin");
+  const {admin}=useContext(AppContext)
   return (
     <div>
       <Toaster/>
@@ -34,6 +39,9 @@ const App = () => {
         <Route path="/my-orders" element={<MyOrders />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        {/*Admin Routes*/}
+        <Route path="/admin" element={admin?<AdminLayout/>:<AdminLogin/>}/>
+
         
       </Routes>
       {!adminPath&&<Footer/>} 

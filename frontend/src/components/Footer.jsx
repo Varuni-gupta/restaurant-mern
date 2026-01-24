@@ -1,10 +1,10 @@
 import React  from 'react'
 export default function Footer() {
     return (
-        <>
+        <div className="py-16">
            
             
-            <footer className="flex flex-wrap justify-center lg:justify-between overflow-hidden gap-10 md:gap-20 py-16 px-6 md:px-16 lg:px-24 xl:px-32 text-[13px] text-gray-500 bg-black">
+            <footer className="py-12 flex flex-wrap justify-center lg:justify-between overflow-hidden gap-10 md:gap-20 py-16 px-6 md:px-16 lg:px-24 xl:px-32 text-[13px] text-gray-500 bg-black">
                 <div className="flex flex-wrap items-start gap-10 md:gap-[60px] xl:gap-[140px]">
                     <a href="https://prebuiltui.com">
                         <svg width="31" height="34" viewBox="0 0 31 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,6 +80,6 @@ export default function Footer() {
                     <p className="mt-3 text-center">© 2025 <a href="https://prebuiltui.com">PrebuiltUI</a></p>
                 </div>
             </footer>
-        </>
+        </div>
     );
 };
