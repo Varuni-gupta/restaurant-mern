@@ -17,7 +17,7 @@ export const addCategory = async (req, res) => {
     });
     return res
       .status(201)
-      .json({ message: "Category added successfully", category: newCategory });
+      .json({ message: "Category added successfully",success:true, category: newCategory });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Server Error" });
@@ -26,7 +26,7 @@ export const addCategory = async (req, res) => {
 export const getAllCategories = async (req, res) => {
   try {
     const categories = await Category.find().sort({ createdAt: -1 });
-    return res.status(200).json({ categories });
+    return res.status(200).json({ categories,success:true });
   } catch (error) {
     return res.status(500).json({ message: "Server Error" });
   }
@@ -62,7 +62,7 @@ export const deleteCategory = async (req, res) => {
     if (!category) {
       return res.status(404).json({ message: "Category not found" });
     }
-    return res.status(200).json({ message: "Category deleted successfully" });
+    return res.status(200).json({ message: "Category deleted successfully",success:true });
   } catch (error) {
     return res.status(500).json({ message: "Server Error" });
   }

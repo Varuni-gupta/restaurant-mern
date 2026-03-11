@@ -9,7 +9,7 @@ export const addMenuItem = async (req, res) => {
         }
         const result = await cloudinary.uploader.upload(req.file.path);
         const newMenuItem = await Menu.create({ name, description, price, category, image: result.secure_url })
-        res.status(201).json({ message: "Menu item added successfully", menuItem: newMenuItem });
+        res.status(201).json({ message: "Menu item added successfully", menuItem: newMenuItem,success:true });
     }
     catch (error)
     {
@@ -20,7 +20,10 @@ export const addMenuItem = async (req, res) => {
 export const getAllMenuItems = async (req, res) => {
     try {
         const menuItems = await Menu.find().populate("category", "name").sort({ createdAt: -1 });
-        res.status(200).json({ menuItems });
+        res.status(200).json({
+      success: true,
+      menuItems
+    });
     }
     catch (error)
     {
@@ -67,7 +70,7 @@ export const deleteMenuItem = async (req, res) => {
     try {
         const { id } = req.params;
         const menuItem = await Menu.findByIdAndDelete(id); 
-        res.status(200).json({ message: "Menu item deleted successfully" });
+        res.status(200).json({ message: "Menu item deleted successfully",success:true });
     }
     catch (error) {
         return res.status(500).json({ message: "Server error", error: error.message });
